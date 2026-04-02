@@ -1,22 +1,32 @@
 import logo from "./logo.svg";
 import "./App.scss";
+import MyComponent from "./example/MyComponent";
+
+import Nav from "./Nav/Nav";
+import Home from "./example/Home";
+import ListUser from "./Users/ListUser";
+import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello world with React.js (Hoi Dan IT)</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+          <Nav />
+          <img src={logo} className="App-logo" alt="logo" />
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+
+            <Route path="/todo" element={<MyComponent />} />
+
+            <Route path="/about" element={<Home />} />
+
+            <Route path="/user" element={<ListUser />} />
+          </Routes>
+        </header>
+      </div>
+    </BrowserRouter>
   );
 }
 
